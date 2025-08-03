@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import Home from './pages/home'
+import Home from './pages/Home'
 import AllTasks from './pages/AllTasks';
 import ImportantTasks from './pages/ImportantTasks'
 import CompletedTasks from './pages/CompletedTasks'
