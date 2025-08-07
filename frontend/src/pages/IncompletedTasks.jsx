@@ -13,7 +13,7 @@ const IncompletedTasks = () => {
                     id: localStorage.getItem("id"),
                     authorization: `Bearer ${localStorage.getItem("token")}`,
                 };
-                const response = await axios.get("http://localhost:1000/api/v2/get-Incomplete-tasks", { headers });
+                const response = await axios.get("https://task-management-app-2xu3.onrender.com/api/v2/get-Incomplete-tasks", { headers });
                 setData(response.data.data);
             } catch (error) {
                 console.error("Fetch user data failed:", error);

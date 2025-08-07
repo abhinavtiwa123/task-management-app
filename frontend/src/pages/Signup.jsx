@@ -23,7 +23,7 @@ const Signup = () => {
             if (Data.username === "" || Data.email === "" || Data.password === "") {
                 alert("All fields are required");
             } else {
-                const response = await axios.post("http://localhost:1000/api/v1/sign-in", Data);
+                const response = await axios.post("https://task-management-app-2xu3.onrender.com/api/v1/sign-in", Data);
                 console.log("Signup response:", response.data);
                 setData({ username: "", email: "", password: "" })
                 alert("Signup successful!");

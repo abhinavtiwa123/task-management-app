@@ -15,7 +15,7 @@ const Cards = ({ home, setInputDiv, data, setUpdatedData }) => {
 
     const handleCompleteTask = async (id) => {
         try {
-            await axios.put(`http://localhost:1000/api/v2/update-complete-task/${id}`,
+            await axios.put(`https://task-management-app-2xu3.onrender.com/api/v2/update-complete-task/${id}`,
                 {},
                 { headers }
             );
@@ -26,7 +26,7 @@ const Cards = ({ home, setInputDiv, data, setUpdatedData }) => {
     // handle important task
     const handleImportant = async (id) => {
         try {
-            await axios.put(`http://localhost:1000/api/v2/update-imp-task/${id}`, {},
+            await axios.put(`https://task-management-app-2xu3.onrender.com/api/v2/update-imp-task/${id}`, {},
                 { headers }
             );
         } catch (error) {
@@ -43,7 +43,7 @@ const Cards = ({ home, setInputDiv, data, setUpdatedData }) => {
     // handle delete task
     const deleteTask = async (id) => {
         try {
-            await axios.delete(`http://localhost:1000/api/v2/delete-tasks/${id}`,
+            await axios.delete(`https://task-management-app-2xu3.onrender.com/api/v2/delete-tasks/${id}`,
                 { headers }
             );
         } catch (error) {

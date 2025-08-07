@@ -46,7 +46,7 @@ const InputData = ({ InputDiv, setInputDiv, UpdatedData, setUpdatedData, allTask
                 return;
             }
 
-            await axios.post("http://localhost:1000/api/v2/create-task", Data, { headers });
+            await axios.post("https://task-management-app-2xu3.onrender.com/api/v2/create-task", Data, { headers });
             setData({ title: "", description: "" });
             setInputDiv("hidden");
         } catch (error) {
@@ -71,7 +71,7 @@ const InputData = ({ InputDiv, setInputDiv, UpdatedData, setUpdatedData, allTask
                 return;
             }
 
-            await axios.put(`http://localhost:1000/api/v2/update-tasks/${UpdatedData.id}`, Data, { headers });
+            await axios.put(`https://task-management-app-2xu3.onrender.com/api/v2/update-tasks/${UpdatedData.id}`, Data, { headers });
 
             setUpdatedData({ id: "", title: "", description: "" });
             setData({ title: "", description: "" });
