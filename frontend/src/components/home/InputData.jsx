@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { RxCross2 } from "react-icons/rx";
 import axios from 'axios';
 
@@ -23,7 +23,6 @@ const InputData = ({ InputDiv, setInputDiv, UpdatedData, setUpdatedData, allTask
         setData({ ...Data, [name]: value });
     };
 
-    // Check for duplicate title or description
     const isDuplicate = () => {
         return allTasks?.some(task =>
             task._id !== UpdatedData.id && (
@@ -33,19 +32,16 @@ const InputData = ({ InputDiv, setInputDiv, UpdatedData, setUpdatedData, allTask
         );
     };
 
-    // Submit new task
     const submitData = async () => {
         try {
             if (Data.title === "" || Data.description === "") {
                 alert("All fields are required");
                 return;
             }
-
             if (isDuplicate()) {
                 alert("Title or Description already exists!");
                 return;
             }
-
             await axios.post("https://task-management-app-2xu3.onrender.com/api/v2/create-task", Data, { headers });
             setData({ title: "", description: "" });
             setInputDiv("hidden");
@@ -54,7 +50,6 @@ const InputData = ({ InputDiv, setInputDiv, UpdatedData, setUpdatedData, allTask
         }
     };
 
-    // Update existing task
     const UpdateTask = async () => {
         try {
             if (Data.title === "" || Data.description === "") {
@@ -85,7 +80,8 @@ const InputData = ({ InputDiv, setInputDiv, UpdatedData, setUpdatedData, allTask
         <>
             <div className={`${InputDiv} top-0 left-0 bg-gray-800 opacity-80 h-screen w-full`} />
             <div className={`${InputDiv} top-0 left-0 flex items-center justify-center h-screen w-full`}>
-                <div className='w-2/6 bg-gray-900 p-4 rounded'>
+                {/* Responsive width: full on mobile, 3/4 on small screens, 1/2 on medium, 1/3 on large */}
+                <div className='w-full sm:w-3/4 md:w-2/4 lg:w-2/6 bg-gray-900 p-4 rounded'>
                     <div className='flex justify-end'>
                         <button
                             className='text-2xl cursor-pointer'
@@ -120,14 +116,14 @@ const InputData = ({ InputDiv, setInputDiv, UpdatedData, setUpdatedData, allTask
 
                     {UpdatedData.id === "" ? (
                         <button
-                            className='px-3 py-2 bg-blue-400 rounded text-black text-xl font-semibold cursor-pointer'
+                            className='px-3 py-2 bg-blue-400 rounded text-black text-lg sm:text-xl font-semibold cursor-pointer w-full'
                             onClick={submitData}
                         >
                             Submit
                         </button>
                     ) : (
                         <button
-                            className='px-3 py-2 bg-blue-400 rounded text-black text-xl font-semibold cursor-pointer'
+                            className='px-3 py-2 bg-blue-400 rounded text-black text-lg sm:text-xl font-semibold cursor-pointer w-full'
                             onClick={UpdateTask}
                         >
                             Update

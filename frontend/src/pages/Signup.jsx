@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import axios from "axios"
-
+import axios from "axios";
 
 const Signup = () => {
     const history = useNavigate();
@@ -11,6 +10,7 @@ const Signup = () => {
     if (isLoggedIn === true) {
         history("/");
     }
+
     const [Data, setData] = useState({ username: "", email: "", password: "" });
 
     const change = (e) => {
@@ -25,7 +25,7 @@ const Signup = () => {
             } else {
                 const response = await axios.post("https://task-management-app-2xu3.onrender.com/api/v1/sign-in", Data);
                 console.log("Signup response:", response.data);
-                setData({ username: "", email: "", password: "" })
+                setData({ username: "", email: "", password: "" });
                 alert("Signup successful!");
                 history("/login");
             }
@@ -34,23 +34,57 @@ const Signup = () => {
             alert(error.response?.data?.message || "Signup failed");
         }
     };
+
     return (
-        <div className='h-[98vh] flex items-center justify-center'>
-            <div className='p-4 w-2/6 rounded bg-gray-800'>
-                <div className='text-2xl font-semibold'>Signup</div>
-                <input type="username" placeholder='username' className='bg-gray-700 px-3 py-2 my-3 w-full rounded' name='username' value={Data.username} onChange={change} />
+        <div className="min-h-screen flex items-center justify-center p-4 bg-gray-900">
+            <div className="p-6 w-full max-w-md rounded-lg bg-gray-800 shadow-lg">
+                <div className="text-2xl font-semibold text-white text-center mb-4">Signup</div>
 
-                <input type="email" placeholder='email' className='bg-gray-700 px-3 py-2 my-3 w-full rounded' name='email' value={Data.email} required onChange={change} />
+                <input
+                    type="text"
+                    placeholder="Username"
+                    className="bg-gray-700 text-white px-3 py-2 my-2 w-full rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    name="username"
+                    value={Data.username}
+                    onChange={change}
+                />
 
-                <input type="password" placeholder='password' className='bg-gray-700 px-3 py-2 my-3 w-full rounded' name='password' value={Data.password} onChange={change} />
+                <input
+                    type="email"
+                    placeholder="Email"
+                    className="bg-gray-700 text-white px-3 py-2 my-2 w-full rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    name="email"
+                    value={Data.email}
+                    onChange={change}
+                    required
+                />
 
-                <div className='w-full flex items-center justify-between'>
-                    <button className='bg-blue-400 text-xl font-semibold text-black px-3 py-2 rounded cursor-pointer' onClick={submit}>SignUp</button>
-                    <Link to="/login" className='text-gray-400 hover:text-gray-200'>Already having an account? Login here</Link>
+                <input
+                    type="password"
+                    placeholder="Password"
+                    className="bg-gray-700 text-white px-3 py-2 my-2 w-full rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    name="password"
+                    value={Data.password}
+                    onChange={change}
+                />
+
+                <div className="w-full flex flex-col sm:flex-row items-center justify-between mt-4 gap-3">
+                    <button
+                        className="bg-blue-400 text-lg font-semibold text-black px-4 py-2 rounded cursor-pointer w-full sm:w-auto"
+                        onClick={submit}
+                    >
+                        SignUp
+                    </button>
+                    <Link
+                        to="/login"
+                        className="text-gray-400 hover:text-gray-200 text-sm"
+                    >
+                        Already have an account? Login here
+                    </Link>
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Signup
+export default Signup;
